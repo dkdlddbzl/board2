@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="css/created.css" />
+
+</head>
+<body>
+	<div layout:fragment="content" id="bbs">
+		<form action="" method="" name="">
+			<div id="bbsCreated">
+
+				<div class="bbsCreated_bottomLine">
+					<dl>
+						<dt>제&nbsp;&nbsp;&nbsp;&nbsp;목</dt>
+						<dd>
+							<input type="text" name="" size="60" maxlength="100"
+								class="boxTF" />
+						</dd>
+					</dl>
+				</div>
+
+				<div class="bbsCreated_bottomLine">
+					<dl>
+						<dt>작 성 자</dt>
+						<dd>
+							<input type="text" name="" size="35" maxlength="20" class="boxTF" />
+						</dd>
+					</dl>
+				</div>
+
+				<div class="bbsCreated_bottomLine">
+					<dl>
+						<dt>E-Mail</dt>
+						<dd>
+							<input type="text" name="" size="35" maxlength="50" class="boxTF" />
+						</dd>
+					</dl>
+				</div>
+
+				<div id="bbsCreated_content">
+					<dl>
+						<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
+						<dd>
+							<textarea rows="12" cols="63" name="" class="boxTA"></textarea>
+						</dd>
+					</dl>
+				</div>
+
+				<div class="bbsCreated_noLine">
+					<dl>
+						<dt>패스워드</dt>
+						<dd>
+							<input type="password" name="" size="35" maxlength="7"
+								class="boxTF" /> &nbsp;(게시물 수정 및 삭제시 필요!!)
+						</dd>
+					</dl>
+				</div>
+
+			</div>
+
+			<div id="bbsCreated_footer">
+
+
+				<input type="button" value=" 수정하기 " class="btn2" onclick="" /> <input
+					type="button" value=" 수정취소 " class="btn2" />
+			</div>
+
+		</form>
+	</div>
+	
+		
+<th:block layout:fragment="script">
+<script th:inline="javascript">
+</script>
+</th:block>
+	
+</body>
+</html>

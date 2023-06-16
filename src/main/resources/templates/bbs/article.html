@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="css/article.css" />
+
+</head>
+<body>
+
+	<div layout:fragment="content" id="bbs">
+
+		<div id="bbsArticle">
+
+			<div id="bbsArticle_header">
+				<p></p>
+			</div>
+
+			<div class="bbsArticle_bottomLine">
+				<dl>
+					<dt>작성자</dt>
+					<dd></dd>
+					<dt>줄수</dt>
+					<dd></dd>
+				</dl>
+			</div>
+
+			<div class="bbsArticle_bottomLine">
+				<dl>
+					<dt>등록일</dt>
+					<dd></dd>
+					<dt>조회수</dt>
+					<dd></dd>
+				</dl>
+			</div>
+
+			<div id="bbsArticle_content">
+				<table width="600" border="0">
+					<tr>
+						<td style="padding-left: 20px 80px 20px 62px;" valign="top"
+							height="200"><textarea rows="12" cols="82" name="content"
+								style="border: none" class="boxTA"></textarea>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+		<div class="bbsArticle_noLine" style="text-align: right">
+
+			<p></p>
+
+		</div>
+
+		<div id="bbsArticle_footer">
+			<div id="leftFooter">
+				<input type="button" value=" 수정 " class="btn2" /> <input
+					type="button" value=" 삭제 " class="btn2" />
+			</div>
+			<div id="rightFooter">
+				<input type="button" value=" 리스트 " class="btn2" />
+			</div>
+		</div>
+	
+	</div>
+	
+<th:block layout:fragment="script">
+<script th:inline="javascript">
+</script>
+</th:block>
+
+</body>
+</html>

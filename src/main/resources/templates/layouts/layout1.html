@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- 레이아웃으로 사용할 페이지에 추가  -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 공통으로 사용할 css, js -->
+<link th:href="@{css/style.css}" rel="stylesheet">
+<script th:scr="@{js.util.js}"></script>
+
+
+<!-- 공통으로 사용할 jquery  -->
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+	<div th:replace="fragments/header::header"></div>
+	
+	<div layout:fragment="content" class="content">
+	</div>
+	
+	<div th:replace="fragments/footer::footer"></div>
+	
+	<!-- 각 페이지의 자바스크립트가 작성될 위치 -->
+	<th:block layout:fragment="script"></th:block>
+</body>
+</html>

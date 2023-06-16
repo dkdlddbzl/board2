@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<a th:href="@{/thymeleaf/ex01}">예제 1 페이지 이동</a>
+	</div>
+		<div>
+		<a th:href="@{https://www.thymeleaf.org/index.html}">공식 사이트 이동</a>
+	</div>
+		<div>
+		<!-- get방식으로 보내는 방법  -->
+		
+		<a th:href="@{/thymeleaf/ex06(param1 = '데이터1', param2 = '데이터2')}">파라미터 전달하며 이동</a>
+	</div>
+</body>
+</html>
