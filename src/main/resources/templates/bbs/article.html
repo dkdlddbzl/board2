@@ -2,14 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
 <link rel="stylesheet" type="text/css" href="css/article.css" />
+</th:block>
 
-</head>
-<body>
 
 	<div layout:fragment="content" id="bbs">
 
@@ -72,5 +70,4 @@
 </script>
 </th:block>
 
-</body>
 </html>

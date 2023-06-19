@@ -2,23 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
 <link rel="stylesheet" type="text/css" href="css/created.css" />
+</th:block>
 
-</head>
-<body>
 	<div layout:fragment="content" id="bbs">
-		<form action="" method="" name="">
+		<form action="/updated_ok" method="post" name="myForm">
 			<div id="bbsCreated">
 
 				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>제&nbsp;&nbsp;&nbsp;&nbsp;목</dt>
 						<dd>
-							<input type="text" name="" size="60" maxlength="100"
+							<input type="text" name="subject" size="60" maxlength="100"
 								class="boxTF" />
 						</dd>
 					</dl>
@@ -28,7 +25,7 @@
 					<dl>
 						<dt>작 성 자</dt>
 						<dd>
-							<input type="text" name="" size="35" maxlength="20" class="boxTF" />
+							<input type="text" name="name" size="35" maxlength="20" class="boxTF" />
 						</dd>
 					</dl>
 				</div>
@@ -37,7 +34,7 @@
 					<dl>
 						<dt>E-Mail</dt>
 						<dd>
-							<input type="text" name="" size="35" maxlength="50" class="boxTF" />
+							<input type="text" name="email" size="35" maxlength="50" class="boxTF" />
 						</dd>
 					</dl>
 				</div>
@@ -46,7 +43,7 @@
 					<dl>
 						<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
 						<dd>
-							<textarea rows="12" cols="63" name="" class="boxTA"></textarea>
+							<textarea rows="12" cols="63" name="content" class="boxTA"></textarea>
 						</dd>
 					</dl>
 				</div>
@@ -55,7 +52,7 @@
 					<dl>
 						<dt>패스워드</dt>
 						<dd>
-							<input type="password" name="" size="35" maxlength="7"
+							<input type="password" name="pwd" size="35" maxlength="7"
 								class="boxTF" /> &nbsp;(게시물 수정 및 삭제시 필요!!)
 						</dd>
 					</dl>
@@ -64,10 +61,13 @@
 			</div>
 
 			<div id="bbsCreated_footer">
+				<input type="hidden" name="num" />
+				<input type="hidden" name="pageNum" />
+				<input type="hidden" name="searchKey" />
+				<input type="hidden" name="searchValue" />
 
-
-				<input type="button" value=" 수정하기 " class="btn2" onclick="" /> <input
-					type="button" value=" 수정취소 " class="btn2" />
+				<input type="button" value=" 수정하기 " class="btn2" onclick="sendIt();" /> 
+				<input type="button" value=" 수정취소 " class="btn2" />
 			</div>
 
 		</form>
@@ -76,8 +76,59 @@
 		
 <th:block layout:fragment="script">
 <script th:inline="javascript">
+function sendIt() {
+	var f = document.myForm; //폼 태그
+	var str = f.subject.value; //제목에 입력된 값을 가져온다
+	str = str.trim(); //공백을 앞뒤로 없애준다
+	
+	if(!str) {
+		alert("제목을 입력하세요.");
+		f.subject.focus();
+		return;
+	}
+	
+	str = f.name.value;
+	str = str.trim();
+	
+	if(!str) {
+		alert("이름을 입력하세요.");
+		f.name.focus();
+		return;
+	}
+	
+		str = f.email.value;
+	str = str.trim();
+	
+	if(str) {
+		if(!isValidEmail(str)) {
+			alert("정상적인 이메일을 입력하세요!");
+			f.email.focus();
+			return;
+		}
+	}
+	
+	str = f.content.value;
+	str = str.trim();
+	
+	if(!str) {
+		alert("내용을 입력하세요.");
+		f.content.focus();
+		return;
+	}
+	
+	str = f.pwd.value;
+	str = str.trim();
+	
+	if(!str) {
+		alert("패스워드를 입력하세요.");
+		f.pwd.focus();
+		return;
+	}
+	
+	f.submit();
+	
+}
 </script>
 </th:block>
 	
-</body>
 </html>

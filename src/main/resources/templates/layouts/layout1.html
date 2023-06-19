@@ -8,12 +8,14 @@
 
 <!-- 공통으로 사용할 css, js -->
 <link th:href="@{css/style.css}" rel="stylesheet">
-<script th:scr="@{js.util.js}"></script>
+<script th:src="@{js/util.js}"></script>
 
 
 <!-- 공통으로 사용할 jquery  -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css"></th:block>
 
 </head>
 <body>
