@@ -14,24 +14,24 @@
 		<div id="bbsArticle">
 
 			<div id="bbsArticle_header">
-				<p></p>
+				<p th:if="${#strings.isEmpty(errorMessage)}" th:text="${board.subject}"></p>
 			</div>
 
 			<div class="bbsArticle_bottomLine">
 				<dl>
 					<dt>작성자</dt>
-					<dd></dd>
+					<dd th:if="${#strings.isEmpty(errorMessage)}" th:text="${board.name}"></dd>
 					<dt>줄수</dt>
-					<dd></dd>
+					<dd th:if="${#strings.isEmpty(errorMessage)}" th:text="${lineSu}"></dd>
 				</dl>
 			</div>
 
 			<div class="bbsArticle_bottomLine">
 				<dl>
 					<dt>등록일</dt>
-					<dd></dd>
+					<dd th:if="${#strings.isEmpty(errorMessage)}" th:text="${board.created}"></dd>
 					<dt>조회수</dt>
-					<dd></dd>
+					<dd th:if="${#strings.isEmpty(errorMessage)}" th:text="${board.hitCount}"></dd>
 				</dl>
 			</div>
 
@@ -39,8 +39,9 @@
 				<table width="600" border="0">
 					<tr>
 						<td style="padding-left: 20px 80px 20px 62px;" valign="top"
-							height="200"><textarea rows="12" cols="82" name="content"
-								style="border: none" class="boxTA"></textarea>
+							height="200">
+						<textarea rows="12" cols="82" name="content"
+								style="border: none" class="boxTA" th:if="${#strings.isEmpty(errorMessage)}" th:text="${board.content}"></textarea></td>
 					</tr>
 				</table>
 			</div>
@@ -48,18 +49,20 @@
 		</div>
 
 		<div class="bbsArticle_noLine" style="text-align: right">
-
-			<p></p>
-
+			<p th:if="${#strings.isEmpty(errorMessage)}" th:text="${board.ipAddr}"></p>
 		</div>
 
 		<div id="bbsArticle_footer">
 			<div id="leftFooter">
-				<input type="button" value=" 수정 " class="btn2" /> <input
-					type="button" value=" 삭제 " class="btn2" />
+				<input type="button" value=" 수정 " class="btn2" 
+				th:onclick="|location.href='updated?num=@{${board.num}}&@{${params}}'|" /> 
+				<input type="button" value=" 삭제 " class="btn2"
+				th:onclick="|location.href='deleted_ok?num=@{${board.num}}&@{${params}}'|" />
 			</div>
 			<div id="rightFooter">
-				<input type="button" value=" 리스트 " class="btn2" />
+				<input type="button" value=" 리스트 " class="btn2" 
+				th:if="${#strings.isEmpty(errorMessage)}"
+				th:onclick="|location.href='list?@{${params}}'|" />
 			</div>
 		</div>
 	
@@ -67,6 +70,10 @@
 	
 <th:block layout:fragment="script">
 <script th:inline="javascript">
+	var errorMessage = [[${errorMessage}]];
+	if(errorMessage != null) {
+		alert(errorMessage);
+	}
 </script>
 </th:block>
 

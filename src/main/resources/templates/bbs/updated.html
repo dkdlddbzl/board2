@@ -16,7 +16,7 @@
 						<dt>제&nbsp;&nbsp;&nbsp;&nbsp;목</dt>
 						<dd>
 							<input type="text" name="subject" size="60" maxlength="100"
-								class="boxTF" />
+								th:value="${board.subject}"	class="boxTF" />
 						</dd>
 					</dl>
 				</div>
@@ -25,7 +25,8 @@
 					<dl>
 						<dt>작 성 자</dt>
 						<dd>
-							<input type="text" name="name" size="35" maxlength="20" class="boxTF" />
+							<input type="text" name="name" size="35" maxlength="20" class="boxTF"
+							 th:value="${board.name}" />
 						</dd>
 					</dl>
 				</div>
@@ -34,7 +35,8 @@
 					<dl>
 						<dt>E-Mail</dt>
 						<dd>
-							<input type="text" name="email" size="35" maxlength="50" class="boxTF" />
+							<input type="text" name="email" size="35" maxlength="50" class="boxTF" 
+							th:value="${board.email}" />
 						</dd>
 					</dl>
 				</div>
@@ -43,7 +45,8 @@
 					<dl>
 						<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
 						<dd>
-							<textarea rows="12" cols="63" name="content" class="boxTA"></textarea>
+							<textarea rows="12" cols="63" name="content" class="boxTA"
+							th:text="${board.content}" ></textarea>
 						</dd>
 					</dl>
 				</div>
@@ -53,7 +56,7 @@
 						<dt>패스워드</dt>
 						<dd>
 							<input type="password" name="pwd" size="35" maxlength="7"
-								class="boxTF" /> &nbsp;(게시물 수정 및 삭제시 필요!!)
+								class="boxTF" th:value="${board.pwd}" /> &nbsp;(게시물 수정 및 삭제시 필요!!)
 						</dd>
 					</dl>
 				</div>
@@ -61,13 +64,16 @@
 			</div>
 
 			<div id="bbsCreated_footer">
-				<input type="hidden" name="num" />
-				<input type="hidden" name="pageNum" />
-				<input type="hidden" name="searchKey" />
-				<input type="hidden" name="searchValue" />
+				<!-- 수정하기를 누르면 post 방식으로 데이터가 전달되므로
+				기존의 get방식으로 사용하던 데이터들은 아래와 같이 넘겨준다  -->
+				<input type="hidden" name="num" th:value="${board.num}" />
+				<input type="hidden" name="pageNum" th:value="${pageNum}" />
+				<input type="hidden" name="searchKey" th:value="${searchKey}" />
+				<input type="hidden" name="searchValue" th:value="${searchValue}" />
 
 				<input type="button" value=" 수정하기 " class="btn2" onclick="sendIt();" /> 
-				<input type="button" value=" 수정취소 " class="btn2" />
+				<input type="button" value=" 수정취소 " class="btn2" 
+				th:onclick="|location.href='list?@{${params}}'|"	/>
 			</div>
 
 		</form>

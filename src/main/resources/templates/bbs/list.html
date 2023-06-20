@@ -42,7 +42,26 @@
 					</tr>
 				</thead>
 				<tbody id="lists">
-
+					<!--"${#lists.size(리스트명)}  -->
+					<tr th:if="${#lists.size(lists)}>0" th:each="board:${lists}">
+						<td class="num" th:text="${board.num}"></td>
+						<td class="subject" >
+							<a th:href="|@{${articleUrl}}&num=@{${board.num}}|" th:text="${board.subject}"></a>
+						</td>
+						<td class="name" th:text="${board.name}"></td>
+						<td class="created" th:text="${board.created}"></td>
+						<td class="hitCount" th:text="${board.hitCount}"></td>
+					</tr>
+					
+					<tr th:if="${#lists.size(dataCount)}>0">
+						<td colspan="5" id="footer">
+							<a th:utext="${pageIndexList}"></a>
+						</td>
+					</tr>
+					
+					<tr th:if="${#lists.size(dataCount)} <0 ">
+						<td colspan="5">등록된 게시물이 없습니다.</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -52,6 +71,17 @@
 	
 <th:block layout:fragment="script">
 <script th:inline="javascript">
+var errorMessage1 = [[${param.errorMessage}]]; //get 방식의 데이터를 가지고 올 수 있다
+var errorMessage2 = [[${errorMessage}]];//post 방식의 에러메시지
+
+if(errorMessage1 != null) {
+	alert(errorMessage);
+}
+
+if(errorMessage2 != null) {
+	alert(errorMessage);
+}
+
 	function sendIt() {
 		var f = document.searchForm;
 		var str = f.searchValue.value;
@@ -63,7 +93,7 @@
 			return;
 		}
 	
-		f.submit;
+		f.submit();
 		
 	}
 </script>
